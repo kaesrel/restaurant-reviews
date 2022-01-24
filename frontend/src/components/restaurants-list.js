@@ -71,7 +71,7 @@ const RestaurantsList = props => {
   };
 
   const findByZip = () => {
-    find(searchZip, "name")
+    find(searchZip, "zipcode")
   };
 
   const findByCuisine = () => {
