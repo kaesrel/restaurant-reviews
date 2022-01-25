@@ -27,8 +27,17 @@ $ npm install react-router-dom@5
 
 * Mongodb Realm:
   * 3rd Party Services are deprecated 💢😧. Use the Http Endpoints instead. The configuration interfaces are changed, especially the authentication configuration.
-
-## Todo next:
-  
-more explanation and screen captures.
+  * The function parameters are changed to `{ query, headers, body}, response` instead of `payload, response`.
+ ```javascript
+ // exports = async function(payload, response)  // old
+ exports = async function({ query, headers, body}, response)
+ ```
+  * In `restaurants` function, the following code raises the `then is not a function` error (possibly because the mongodb version in the tutorial is older). The collection.count() function no longer returns the `Promise`.
+  ```javascript
+  await collection.count(q).then(num => num.toString())
+  ```
+  * The `collection.count(q)` returns the `long` number type, so the following code works.
+  ```javascript
+  await collection.count(q).toString()
+  ```
 
